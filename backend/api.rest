@@ -1,0 +1,18 @@
+###
+GET  http://localhost:4000/api/persona
+
+###
+POST  http://localhost:4000/api/persona
+
+###########################################################
+###
+GET  http://localhost:4000/api/tipodocumento
+
+###
+POST http://localhost:4000/api/tipodocumento Content-Type: application/json
+
+{
+    "nombre": "Cedula", "descripcion": "Hola"
+}
+
+###########################################################
