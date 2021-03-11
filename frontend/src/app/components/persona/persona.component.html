@@ -1,0 +1,117 @@
+<h1>Personas</h1>
+<!--Preguntarle al profe de los semilleros-->
+<div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body p-4">
+          <form #personaForm="ngForm" (ngSubmit)="addPersona(personaForm)">
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="PersonaService.selectedPersona._id">  
+            <div class="form-group">
+              <input type="text" name="nombres" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.nombres"
+                placeholder="Nombres" class="form-control">
+            </div>
+  
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="apellidos" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.apellidos"
+                  placeholder="Apellidos" class="form-control">
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <input type="text" name="idtipodocumento" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.idtipodocumento"
+                placeholder="Tipo de documento" class="form-control">
+            </div>
+  
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="number" name="documento" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.documento"
+                  value="0" placeholder="Numero de documento" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="lugarresidencia" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.lugarresidencia"
+                  placeholder="Lugar de residencia" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="fechanacimiento" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.fechanacimiento"
+                  placeholder="Fecha de nacimiento" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="email" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.email"
+                  placeholder="Correo electronico" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="number" name="telefono" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.telefono" value="0"
+                  placeholder="Telefono" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="usuario" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.usuario"
+                  placeholder="Nombre de usuario" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="password" #name="ngModel" [(ngModel)]="PersonaService.selectedPersona.password"
+                  placeholder="Constrasena" class="form-control">
+              </div>
+            </div>
+  
+            <button class="btn btn-primary mr-2" (click)="resetForm(personaForm)">Clean</button>
+            <button class="btn btn-secondary">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Tipo de documento</th>
+        <th>Documento</th>
+        <th>Lugar de residencia</th>
+        <th>Fecha de nacimiento</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Usuario</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of PersonaService.personas">
+          <td>{{ persona.nombres }}</td>
+          <td>{{ persona.apellidos }}</td>
+          <td>{{ persona.idtipodocumento }}</td>
+          <td>{{ persona.documento }}</td>
+          <td>{{ persona.lugarresidencia }}</td>
+          <td>{{ persona.fechanacimiento }}</td>
+          <td>{{ persona.email }}</td>
+          <td>{{ persona.telefono }}</td>
+          <td>{{ persona.usuario }}</td>
+          <td>
+            <a (click)="editPersona(persona)" class="btn btn-secondary btn-sm">
+              <i class="material-icons">edit</i>
+            </a>
+            <a (click)="deletePersona(persona._id, personaForm)" class="btn btn-danger btn-sm">
+              <i class="material-icons">delete</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
